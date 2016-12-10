@@ -3,10 +3,24 @@
 
 _@by_mamagaga_, _@anxolerd_
 
-Dec 15 2016
+Dec 14 2016
 
 -----
 
-## Test slide
+## Code slide
 
-Lorem ipsum dolor sit amet
+```java
+while(true) {
+    System.out.println("Hello world");
+}
+```
+
+>>>>>
+
+## Fragment
+
+<ul>
+  <li class="fragment">Item1</li>
+  <li class="fragment">Item2</li>
+  <li class="fragment">Item3</li>
+</li>
