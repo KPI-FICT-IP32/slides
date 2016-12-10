@@ -1,7 +1,7 @@
 ## Monitoring and optimization
 ### of Java applications
 
-_@by_mamagaga_, _@anxolerd_
+_[@by_mamagaga](https://github.com/VladislavZavadsky)_, _[@anxolerd](https://github.com/anxolerd)_
 
 Dec 14 2016
 
