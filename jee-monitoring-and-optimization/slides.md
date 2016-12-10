@@ -102,9 +102,22 @@ public class MyThreadTwo extends Thread {
 </code></pre>
 
 </div>
+-----
+
+## Memory leak
+
+![Memory leak](img/memoryleak.png)
 >>>>>
 
-
+Memory leak - процес не контрольованого зменшення об'єму вільної оперативної або віртуальної пам'яті комп'ютера, пов'язаний з помилками в працьюючих програмах, які вчасно не звільюють вже не потрібні ділянки пам'яті.
 
 >>>>>
-----
+
+## Example
+
+```java
+1. Object obj;
+2. obj = new AnotherObject();
+3. obj = null;
+4. obj = new AnotherObject();
+```
