@@ -53,7 +53,7 @@ public class TestMain {
 >>>>>
 
 <div id="left">
-<H6 align="center">THREAD NUMBER 1</H6>
+<H6 align="center">THREAD #1</H6>
 <pre>
 <code class="java">
 public class MyThreadOne extends Thread {
@@ -78,7 +78,7 @@ public class MyThreadOne extends Thread {
 
 </div>
 <div id="right">
-<H6 align="center">THREAD NUMBER 2</H6>
+<H6 align="center">THREAD #2</H6>
 <pre>
 <code class="java">
 public class MyThreadTwo extends Thread {
@@ -109,7 +109,7 @@ public class MyThreadTwo extends Thread {
 ![Memory leak](img/memoryleak.png)
 >>>>>
 
-Memory leak - процес не контрольованого зменшення об'єму вільної оперативної або віртуальної пам'яті комп'ютера, пов'язаний з помилками в працьюючих програмах, які вчасно не звільюють вже не потрібні ділянки пам'яті.
+Memory leak - процес не контрольованого зменшення об'єму вільної оперативної або віртуальної пам'яті комп'ютера, пов'язаний з помилками в працьюючих програмах, які вчасно не звілняють вже не потрібні ділянки пам'яті.
 
 >>>>>
 
@@ -121,6 +121,22 @@ Memory leak - процес не контрольованого зменшенн�
 3. obj = null;
 4. obj = new AnotherObject();
 ```
+
+-----
+
+## Пам'ять в Java. Куча
+
+>>>>>
+
+
+
+-----
+
+## Garbage Collection
+
+>>>>>
+
+Garbage Collection (Механізм сбору сміття) - це процес звільнення місця в кучі, для можливості додавання нових об'євтів.
 -----
 
 ## SQL-запити
@@ -136,8 +152,8 @@ Memory leak - процес не контрольованого зменшенн�
 SELECT * FROM "user" WHERE id = 42;
 
 -- Normal
-SELECT boss.* 
-FROM "user" 
+SELECT boss.*
+FROM "user"
   JOIN "user" AS boss ON boss.id = "user".boss_id
 WHERE "user".role = 'employee';
 ```
@@ -177,10 +193,10 @@ WHERE binding_record.valid_since < now() - INTERVAL '42 days'
 
 ```sql
 EXPLAIN ANALYZE
-select distinct agency_client_id 
-from agency_client_binding_history acbh 
-join agency_client ac on ac.id = acbh.agency_client_id 
-where acbh.agency_id = ac.id 
+select distinct agency_client_id
+from agency_client_binding_history acbh
+join agency_client ac on ac.id = acbh.agency_client_id
+where acbh.agency_id = ac.id
   and acbh.valid_since < now() - interval '150 days';
 ```
 
@@ -197,7 +213,7 @@ where acbh.agency_id = ac.id
   <li class="fragment">Оптимізовувати сам запит</li>
 </ul>
 
->>>>> 
+>>>>>
 
 ### Проходити по базі частинами
 
@@ -217,7 +233,7 @@ while (true) {
     // ...
     ResultSet rs = stmt.executeQuery(q);
     if (!rs.isBeforeFirst()) { // result is empty
-       break; 
+       break;
     }
     process(rs);
     // ...
@@ -228,10 +244,10 @@ while (true) {
 >>>>>
 
 ### Розбити запит на декілька менших
- 
+
 ```sql
 SELECT * FROM table_name
-WHERE 
+WHERE
    (table_name.column1 = 'group1' and table_name.some_value > 10)
    or (
        table_name.column1 = 'group2'
@@ -282,7 +298,7 @@ for (Entity item : alist) {
 
 ## Моніторинг застосунків
 
->>>>> 
+>>>>>
 
 ### JMX
 
