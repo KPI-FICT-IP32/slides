@@ -6,9 +6,12 @@ _@by_mamagaga_, _@anxolerd_
 Dec 14 2016
 
 -----
-## DEADLOCK
-### Що це та як запобігти цьому
->>>>>
+
+![ppap](img/ppap.jpg)
+
+-----
+
+![DEADLOCK](img/deadlock.gif)
 
 DEADLOCK - взаємне блокуваня, яке приводить до зависання програми.
 
@@ -48,34 +51,60 @@ public class TestMain {
 }
 ```
 >>>>>
-```java
-//THREAD NUMBER 1
+
+<div id="left">
+<H6 align="center">THREAD NUMBER 1</H6>
+<pre>
+<code class="java">
 public class MyThreadOne extends Thread {
   Thread t2;
 
-  public MyThreadOne() {
-    System.out.println(«MyThreadOne create»);
-  }
-
   public void run() {
-    System.out.println(«MyThreadOne start»);
     try {
     sleep(1000);
     } catch (Exception e) {  }
     try {
-    System.out.println(«MyThreadOne waiting MyThreadTwo finish…»);
-    t2.join();
-
-    } catch (Exception e) {e.printStackTrace()}
-    System.out.println(«MyThreadOne finished»);
+      t2.join(); // Wait for thread #2
+    } catch (Exception e) {
+        // handle
+    }
   }
 
   public void setThread2(Thread t) {
   this.t2 = t;
   }
 }
-```
+</code></pre>
+
+</div>
+<div id="right">
+<H6 align="center">THREAD NUMBER 2</H6>
+<pre>
+<code class="java">
+public class MyThreadTwo extends Thread {
+  Thread t1;
+
+  public void run() {
+    try {
+    t1.join(); // Wait for thread #1
+    } catch (Exception e) { }
+    try {
+      sleep(1000);
+    } catch (Exception e) {
+      // handle
+    }
+  }
+
+  public void setThread1(Thread t) {
+  this.t1 = t;
+  }
+}
+</code></pre>
+
+</div>
 >>>>>
+
+
 
 >>>>>
 ----
