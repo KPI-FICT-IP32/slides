@@ -121,3 +121,183 @@ Memory leak - процес не контрольованого зменшенн�
 3. obj = null;
 4. obj = new AnotherObject();
 ```
+-----
+
+## SQL-запити
+
+![oh-really](img/really.png)
+
+>>>>>
+
+## Очікування
+
+```sql
+-- Easy
+SELECT * FROM "user" WHERE id = 42;
+
+-- Normal
+SELECT boss.* 
+FROM "user" 
+  JOIN "user" AS boss ON boss.id = "user".boss_id
+WHERE "user".role = 'employee';
+```
+
+>>>>>
+
+## Реальність
+
+```sql
+SELECT client.*
+FROM client
+  JOIN company ON client.company_id = company.id
+  JOIN service_record ON service_record.company_id = company.id
+  JOIN binding_record ON binding_record.client_id = client.ud
+WHERE binding_record.valid_since < now() - INTERVAL '42 days'
+  AND (
+    service_record.invoice_id IS NULL
+    OR service_record.upgrade_from_invoice_id IS NULL
+  )
+  AND service_record.id IN (
+    SELECT id FROM services WHERE price > 0
+  )
+  AND NOT EXISTS (
+    SELECT 1
+    FROM binding_record br2
+    WHERE br2.valid_since > binding_record.valid_since
+      AND br2.client_id = binding_record.client_id
+      AND br2.status IN (1,2,5,6)
+  )
+```
+
+>>>>>
+
+## EXPLAIN
+
+Переглянути план виконання запиту і знайти критичні місця
+
+```sql
+EXPLAIN ANALYZE
+select distinct agency_client_id 
+from agency_client_binding_history acbh 
+join agency_client ac on ac.id = acbh.agency_client_id 
+where acbh.agency_id = ac.id 
+  and acbh.valid_since < now() - interval '150 days';
+```
+
+![queryplan](img/queryplan.png)
+
+>>>>>
+
+## Стратегії вирішення
+
+<ul>
+  <li class="fragment">Проходити по базі частинами</li>
+  <li class="fragment">Розбити запит на декілька менших</li>
+  <li class="fragment">Виконувати фільтрацію на стороні застосунку</li>
+  <li class="fragment">Оптимізовувати сам запит</li>
+</ul>
+
+>>>>> 
+
+### Проходити по базі частинами
+
+```java
+String q = "select * from big_table";
+// ...
+ResultSet rs = stmt.executeQuery(q);
+process(rs);
+```
+
+```java
+String q = "select * from big_table limit=? offset=?";
+PreparedStatement st = con.prepareStatement(q);
+while (true) {
+    st.setLong(0, limitValue);
+    st.setLong(1, offsetValue);
+    // ...
+    ResultSet rs = stmt.executeQuery(q);
+    if (!rs.isBeforeFirst()) { // result is empty
+       break; 
+    }
+    process(rs);
+    // ...
+    offsetValue = newOffsetValue;
+}
+```
+
+>>>>>
+
+### Розбити запит на декілька менших
+ 
+```sql
+SELECT * FROM table_name
+WHERE 
+   (table_name.column1 = 'group1' and table_name.some_value > 10)
+   or (
+       table_name.column1 = 'group2'
+       and table_name.some_value < 2
+       and table_name.some_other_value > 13
+   )
+;
+```
+
+```sql
+-- QUERY 1
+SELECT * FROM table_name
+WHERE table_name.column1 = 'group1'
+  AND table_name.some_value > 10;
+
+-- QUERY 2
+SELECT * FROM table_name
+WHERE table_name.column1 = 'group2'
+  AND table_name.some_value < 2
+  AND table_name.some_other_value > 13;
+```
+
+>>>>>
+
+### Виконати фільтрацію на стороні застосунку
+
+```java
+String q = "SELECT * FROM table_name WHERE column1 > 42";
+ResultSet rs = conn.executeQuery(q);
+List<Entity> alist = parseRs(rs);
+for (Entity item : alist) {
+    if (!someCondition(item)) { continue; }
+    process(item);
+}
+```
+
+>>>>>
+
+### Оптимізувати запит
+
+<ul>
+  <li class="fragment">Використоувати індекси</li>
+  <li class="fragment">UNION ALL замість складних OR</li>
+  <li class="fragment">Зменшувати вибірку за допомогою CTE</li>
+</ul>
+
+-----
+
+## Моніторинг застосунків
+
+>>>>> 
+
+### JMX
+
+>>>>>
+
+### JVISUALVM
+
+>>>>>
+
+### JMC
+
+>>>>>
+
+### Logs (ELK)
+
+>>>>>
+
+### JavaMelody
