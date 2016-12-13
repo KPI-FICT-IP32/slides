@@ -147,20 +147,6 @@ Memory leak - процес не контрольованого зменшенн�
 
 Garbage Collection (Механізм сбору сміття) - це процес звільнення місця в купі, для можливості додавання нових об'євтів.
 
->>>>>
-
-<section>
-    <p class="fragment grow">grow</p>
-    <p class="fragment shrink">shrink</p>
-    <p class="fragment fade-out">fade-out</p>
-    <p class="fragment fade-up">fade-up (also down, left and right!)</p>
-    <p class="fragment current-visible">visible only once</p>
-    <p class="fragment highlight-current-blue">blue only once</p>
-    <p class="fragment highlight-red">highlight-red</p>
-    <p class="fragment highlight-green">highlight-green</p>
-    <p class="fragment highlight-blue">highlight-blue</p>
-</section>
-
 -----
 
 ## SQL-запити
@@ -341,24 +327,6 @@ for (Entity item : alist) {
 >>>>>
 
 <img src="img/JMXimg3.png" alt="JMXimg3" class="forJmx">
-
->>>>>
-
-```java
-
-public interface ServerControllerMBean{
-    public int getCorePoolSize();
-    public void setCorePoolSize(int corePoolSize);
-    public int getMaxPoolSize();
-    public void setMaxPoolSize(int maxPoolSize);
-    public int getRejectedCount();
-    public int getActiveThreads();
-    public int getPassiveThreads();
-    public int getTotalThreads();
-    public void flushRejected();
-}
-
-```
 
 -----
 
