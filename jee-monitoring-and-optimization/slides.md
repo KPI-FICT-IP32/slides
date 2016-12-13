@@ -330,6 +330,36 @@ for (Entity item : alist) {
 
 Управленческие расширения Java (Java Management Extensions, JMX) — технология Java, предназначенная для контроля и управления приложениями, системными объектами, устройствами (например, принтерами) и компьютерными сетями. Данные ресурсы представляются MBean-объектами (Managed Bean, управляемый Java Bean).
 
+>>>>>
+
+<img src="img/JMXimg1.png" alt="JMXimg1" class="forJmx">
+
+>>>>>
+
+<img src="img/JMXimg2.png" alt="JMXimg2" class="forJmx">
+
+>>>>>
+
+<img src="img/JMXimg3.png" alt="JMXimg3" class="forJmx">
+
+>>>>>
+
+```java
+
+public interface ServerControllerMBean{
+    public int getCorePoolSize();
+    public void setCorePoolSize(int corePoolSize);
+    public int getMaxPoolSize();
+    public void setMaxPoolSize(int maxPoolSize);
+    public int getRejectedCount();
+    public int getActiveThreads();
+    public int getPassiveThreads();
+    public int getTotalThreads();
+    public void flushRejected();
+}
+
+```
+
 -----
 
 ### JVISUALVM
