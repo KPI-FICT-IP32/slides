@@ -345,6 +345,10 @@ for (Entity item : alist) {
 **Java Mission Control (JMC)** — набір утиліт для керування, моніторингу та профілювання Java-застосунків.
  Входить до складу Oracle JDK з версії 7u40. Складається із JMX консолі та Java Flight Recorder 
 
+>>>>>
+
+### Демо
+
 -----
 
 ## Logs (ELK)
@@ -359,6 +363,8 @@ for (Entity item : alist) {
 
 >>>>>
 
+### Демо
+
 [Public Kibana instance](http://demo.elastic.co/)
 
 -----
@@ -368,3 +374,16 @@ for (Entity item : alist) {
 >>>>>
 
 https://github.com/javamelody/javamelody/wiki
+![javamelody](img/javamelody.png)
+
+>>>>>
+
+### Демо
+
+-----
+
+# Дякуємо, що дослухали до кінця)
+
+>>>>>
+
+![awesome](img/youreawesome.gif)
