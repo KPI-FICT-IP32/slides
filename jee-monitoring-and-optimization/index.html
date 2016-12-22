@@ -4,10 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.1.0/styles/monokai-sublime.min.css">
-    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/highlight.js/9.1.0/styles/monokai-sublime.min.css">
+    <link rel="stylesheet" type="text/css" href="custom.css">
+
+    <!-- Print stylesheet -->
+    <script type="text/javascript">
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      if (window.location.search.match( /print-pdf/gi )) {
+        link.href = '//cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+      } else {
+        link.href = '//cdn.jsdelivr.net/reveal.js/3.0.0/css/print/paper.css';
+      }
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
   </head>
   <body>
     <div class="reveal">

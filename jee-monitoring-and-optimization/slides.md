@@ -24,38 +24,40 @@ _[@by_mamagaga](https://github.com/VladislavZavadsky)_, _[@anxolerd](https://git
 
 ## Типовий приклад
 
-<div class="left">
-<pre><code class="java"><!--
--->class T1 extends Thread {
-   @Override
-   public void run() {
-       // ...
-       lockA.lock();
-       lockB.lock();
-       // Critical section
-       lockB.unlock();
-       lockA.unlock();
-       // ...
-   }
-}<!--
---></code></pre>
-</div>
+<div>
+  <div class="left">
+  <pre><code class="java"><!--
+  -->class T1 extends Thread {
+     @Override
+     public void run() {
+         // ...
+         lockA.lock();
+         lockB.lock();
+         // Critical section
+         lockB.unlock();
+         lockA.unlock();
+         // ...
+     }
+  }<!--
+  --></code></pre>
+  </div>
 
-<div class="right">
-<pre><code class="java"><!--
--->class T2 extends Thread {
-   @Override
-   public void run() {
-       // ...
-       lockB.lock();
-       lockA.lock();
-       // Critical section
-       lockA.unlock();
-       lockB.unlock();
-       // ...
-   }
-}<!--
---></code></pre>
+  <div class="right">
+  <pre><code class="java"><!--
+  -->class T2 extends Thread {
+     @Override
+     public void run() {
+         // ...
+         lockB.lock();
+         lockA.lock();
+         // Critical section
+         lockA.unlock();
+         lockB.unlock();
+         // ...
+     }
+  }<!--
+  --></code></pre>
+  </div>
 </div>
 
 >>>>> 
