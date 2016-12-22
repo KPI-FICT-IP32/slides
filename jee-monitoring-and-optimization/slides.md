@@ -336,6 +336,10 @@ for (Entity item : alist) {
 
 <img src="img/JMXimg3.png" alt="JMXimg3" class="forJmx">
 
+>>>>>
+
+### Демо
+
 -----
 
 ## JMC
@@ -348,6 +352,14 @@ for (Entity item : alist) {
 >>>>>
 
 ### Демо
+
+>>>>>
+
+### Корисні посилання
+
+- [Офіційна сторінка](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html)
+- [Демонстрація можливостей JMC](https://youtu.be/qytuEgVmhsI)
+- [Вступ до Java Mission Control](https://youtu.be/WMEpRUgp9Y4)
 
 -----
 
@@ -366,6 +378,13 @@ for (Entity item : alist) {
 ### Демо
 
 [Public Kibana instance](http://demo.elastic.co/)
+
+>>>>>
+
+### Корисні посилання
+
+- [OSDN2016 - TARAS FILIPOV - СОВРЕМЕННЫЕ СРЕДСТВА АНАЛИЗА ЛОГОВ](https://youtu.be/lppeaIgVpqQ)
+- [Встановлення ELK стеку](https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elk-stack-on-ubuntu-14-04)
 
 -----
 
